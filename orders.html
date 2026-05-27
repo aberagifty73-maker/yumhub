@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order History</title>
+    <link rel="stylesheet" href="web2.css">
+</head>
+<body>
+
+<h1 style="text-align:center;">📦 Your Orders</h1>
+
+<div id="orders"></div>
+
+<script>
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+let container = document.getElementById("orders");
+
+if (orders.length === 0) {
+    container.innerHTML = "<p style='text-align:center;'>No orders yet 😅</p>";
+} else {
+    orders.forEach(order => {
+        let div = document.createElement("div");
+
+        let itemsText = order.items.map(i => 
+            i.name + " x" + i.quantity
+        ).join(", ");
+
+        div.innerHTML = 
+            <div class="order-card">
+                <h3>🧾 Order</h3>
+                <p>${itemsText}</p>
+                <p><b>${order.date}</b></p>
+            </div>
+        ;
+
+        container.appendChild(div);
+    });
+}
+</script>
+
+</body>
+</html>

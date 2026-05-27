@@ -1,0 +1,931 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+*{
+    transition: background 0.3s ease,
+                color 0.3s ease;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(to bottom right, #fff8f0, #ffe0cc);
+
+    font-family: Arial, sans-serif;
+
+    min-height: 100vh;
+}
+body,
+nav,
+.card,
+.cart,
+.admin,
+.admin-login,
+input,
+select,
+button {
+    transition: all 0.3s ease;
+}
+
+/* Navbar */
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: #ff6b00;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo{
+    color: white;
+    font-size: 30px;
+}
+
+nav ul{
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+nav a{
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+    transition: 0.3s;
+}
+
+nav a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 2px;
+    background: white;
+    transition: 0.3s;
+}
+
+nav a:hover::after{
+    width: 100%;
+}
+
+/* Hero Section */
+.hero{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 60px;
+    gap: 50px;
+    min-height: 90vh;
+}
+
+.hero-text h2{
+    font-size: 65px;
+    color: #222;
+    line-height: 1.1;
+}
+
+.hero-text p{
+    margin-top: 20px;
+    font-size: 20px;
+    color: #555;
+    line-height: 1.6;
+    max-width: 550px;
+}
+
+.hero button{
+    margin-top: 30px;
+    padding: 16px 35px;
+    border: none;
+    background: #ff6b00;
+    color: white;
+    font-size: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.hero button:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255,107,0,0.3);
+}
+
+.hero-image img{
+    width: 450px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    transition: 0.3s;
+
+    animation: float 3s ease-in-out infinite;
+    box-shadow: 0 15px 40px rgba(255,107,0,0.25);
+}
+@keyframes float {
+
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.hero-image img:hover{
+    transform: scale(1.03);
+}
+
+/* Food Cards */
+.foods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    padding: 40px;
+}
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 22px;
+    text-align: center;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+
+    transition: all 0.3s ease;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+
+    object-fit: cover;
+
+    border-radius: 16px;
+
+    transition: 0.3s;
+}
+
+.card:hover img {
+    transform: scale(1.05);
+}
+
+.card p {
+    color: #ff6b00;
+    font-weight: bold;
+}
+.cart {
+    position: fixed;
+    right: 20px;
+    top: 100px;
+
+    width: 300px;
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 22px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+
+    z-index: 999;
+
+    max-height: 80vh;
+
+    overflow-y: auto;
+
+    transform: translateX(120%);
+    transition: transform 0.4s ease;
+}
+.cart.active {
+    transform: translateX(0);
+}
+
+.cart h2 {
+    margin-bottom: 15px;
+    color: #ff6b00;
+}
+
+.cart ul {
+    list-style: none;
+    padding: 0;
+}
+
+.cart li {
+    margin: 12px 0;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    background: #f7f7f7;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.cart li button {
+    width: auto;
+
+    padding: 5px 10px;
+
+    font-size: 12px;
+
+    border-radius: 8px;
+}
+
+.cart h3 {
+    margin-top: 20px;
+
+    color: #222;
+}
+
+.cart button {
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    background: #ff6b00;
+    color: white;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#message {
+    margin-top: 10px;
+    font-weight: bold;
+    color: green;
+}
+.login-box {
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    text-align: center;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.login-box input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+}
+.order-card {
+    background: white;
+    margin: 20px auto;
+    padding: 15px;
+    width: 300px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    cursor: pointer;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.card h3 {
+    margin-top: 15px;
+    font-size: 22px;
+    color: #222;
+}
+
+.card p {
+    color: #ff6b00;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 8px;
+}
+
+.card button {
+    margin-top: 12px;
+    width: 100%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 32px;
+    margin: 30px 0;
+}
+button {
+    background: #ff6b00;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #e85c00;
+    transform: scale(1.05);
+}
+@media (max-width: 768px) {
+
+    /* NAVBAR */
+    nav {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* HERO */
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+        min-height: auto;
+    }
+
+    .hero-text h2 {
+        font-size: 42px;
+    }
+
+    .hero-text p {
+        font-size: 18px;
+    }
+
+    .hero-image img {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    /* FOOD GRID */
+    .foods {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+
+        padding: 20px;
+
+        gap: 18px;
+    }
+
+    .card img {
+        height: 140px;
+    }
+
+    /* CART */
+    .cart {
+        position: static;
+
+        width: 100%;
+
+        margin-top: 20px;
+    }
+
+    /* CONTROLS */
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .controls input,
+    .controls select {
+        width: 90%;
+    }
+
+    /* ADMIN */
+    .admin,
+    .admin-login {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    .admin input,
+    .admin select {
+        width: 90%;
+    }
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+.dark {
+    background: linear-gradient(to bottom right, #121212, #1e1e1e);
+    color: white;
+}
+
+.dark nav {
+    background: #000;
+}
+
+.dark .section-title {
+    color: white;
+}
+.dark .cart {
+    background: #1e1e1e;
+    color: white;
+}
+.dark .admin,
+.dark .admin-login {
+    background: #1e1e1e;
+    color: white;
+}
+
+.dark .admin input,
+.dark .admin select,
+.dark .admin-login input {
+    background: #2a2a2a;
+    color: white;
+    border: 1px solid #444;
+}
+
+.admin {
+    background: white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.admin input,
+.admin select {
+    padding: 10px;
+    margin: 5px;
+    width: 200px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.admin button {
+    margin-top: 10px;
+    background: #ff6b00;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.admin-login {
+    background: white;
+    padding: 20px;
+    margin: 20px auto;
+    width: 300px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.admin-login input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+.dark .cart {
+    background: #1e1e1e;
+    color: white;
+}
+.admin button,
+.admin-login button {
+    transition: 0.3s;
+}
+
+.admin button:hover,
+.admin-login button:hover {
+    transform: scale(1.05);
+}
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+}
+
+.controls input,
+.controls select {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+.card, .cart, .admin, .admin-login {
+    transition: all 0.3s ease;
+}
+.dark body {
+    background: #121212;
+    color: white;
+}
+
+/* cards */
+.dark .card {
+    background: #1e1e1e;
+    color: white;
+}
+
+/* inputs */
+.dark input,
+.dark select {
+    background: #2a2a2a;
+    color: white;
+    border: 1px solid #444;
+}
+
+/* hero text */
+.dark .hero-text h2,
+.dark .hero-text p {
+    color: white;
+}
+.dark button {
+    box-shadow: 0 0 10px rgba(255, 107, 0, 0.2);
+}
+.dark {
+    background: #121212;
+    color: white;
+}
+
+.dark .card,
+.dark .cart,
+.dark .admin,
+.dark .admin-login {
+    background: #1e1e1e;
+    color: white;
+}
+
+.dark input,
+.dark select {
+    background: #2a2a2a;
+    color: white;
+    border: 1px solid #444;
+}
+
+.dark nav {
+    background: #0d0d0d;
+}
+.dark .cart li {
+    background: #2a2a2a;
+}
+.badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+
+    padding: 5px 10px;
+
+    font-size: 12px;
+    color: white;
+
+    border-radius: 8px;
+
+    text-transform: uppercase;
+
+    font-weight: bold;
+}
+.food .badge {
+    background: #ff6b00;
+}
+
+.dessert .badge {
+    background: #e91e63;
+}
+
+.drink .badge {
+    background: #2196f3;
+}
+.modal {
+    display: none;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.6);
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 2000;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+
+    border-radius: 20px;
+
+    width: 300px;
+
+    text-align: center;
+}
+
+.dark .modal-content {
+    background: #1e1e1e;
+    color: white;
+}
+.hero-text button,
+.cart button,
+.admin button {
+    transition: all 0.3s ease;
+}
+
+.hero-text button:hover,
+.cart button:hover,
+.admin button:hover {
+    transform: scale(1.05);
+}
+.logo-img {
+    height: 150px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+nav {
+    display: flex;
+    align-items: center;
+}
+.logo-img {
+    height: 55px;
+    width: auto;
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+.menu {
+    padding: 40px;
+}
+
+.food-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.food-card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.food-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.food-card button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: none;
+    background: #ff6b00;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.cart {
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.cart-panel {
+    padding: 20px;
+    background: #fff;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.cart-panel ul {
+    list-style: none;
+    padding: 0;
+}
+
+.cart-panel li {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+.remove-btn {
+    margin-left: 10px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 2px 6px;
+}
+.controls{
+    display: flex;
+    gap: 15px;
+    padding: 20px 40px;
+}
+
+.controls input,
+.controls select{
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+/* DARK MODE */
+.dark-mode {
+    background: #121212;
+    color: white;
+}
+
+/* Navbar */
+.dark-mode nav {
+    background: #1e1e1e;
+}
+
+/* Food Cards */
+.dark-mode .food-card {
+    background: #1f1f1f;
+    color: white;
+    box-shadow: 0 4px 10px rgba(255,255,255,0.05);
+}
+
+/* Cart */
+.dark-mode .cart-panel {
+    background: #1f1f1f;
+    color: white;
+}
+
+/* Inputs */
+.dark-mode input,
+.dark-mode select {
+    background: #2a2a2a;
+    color: white;
+    border: 1px solid #555;
+}
+
+/* Buttons */
+.dark-mode button {
+    background: #ff6b00;
+    color: white;
+}
+
+/* Links */
+.dark-mode a {
+    color: white;
+}
+
+/* Hero Section */
+.dark-mode .hero {
+    background: #181818;
+}
+#darkBtn{
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+.food-card{
+    transition: all 0.3s ease;
+}
+.food-card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+.food-card img{
+    transition: transform 0.3s ease;
+}
+.food-card:hover img{
+    transform: scale(1.05);
+}
+.food-card button{
+    transition: all 0.3s ease;
+}
+.food-card button:hover{
+    background: #ff8533;
+    transform: scale(1.05);
+}
+nav ul li a{
+    transition: all 0.3s ease;
+}
+nav ul li a:hover{
+    color: #ffe0cc;
+}
+@media (max-width: 1024px) {
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .food-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero img {
+        width: 80%;
+    }
+}
+@media (max-width: 600px) {
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        padding: 0;
+    }
+
+    .food-container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-text h2 {
+        font-size: 20px;
+    }
+
+    .hero-text p {
+        font-size: 14px;
+    }
+
+    .food-card {
+        width: 100%;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .controls input,
+    .controls select {
+        width: 100%;
+    }
+}
+img {
+    max-width: 100%;
+    height: auto;
+}

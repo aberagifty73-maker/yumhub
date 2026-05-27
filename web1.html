@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YumHub</title>
+
+    <link rel="stylesheet" href="web2.css">
+</head>
+
+<body>
+
+<!-- Welcome -->
+<script>
+let user = localStorage.getItem("user");
+
+if(user){
+    alert("Welcome " + user + " 🍔");
+}
+</script>
+
+<!-- NAVBAR -->
+<nav>
+
+    <div class="logo">
+        <img src="yumhub.jpg" class="logo-img" alt="YumHub Logo">
+    </div>
+
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Menu</a></li>
+        <li><a href="orders.html">Orders 📦</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#" onclick="toggleCart()">🛒 Cart (<span id="cart-count">0</span>)</a></li>
+        <li><a href="login.html" onclick="logout()">Logout 🚪</a></li>
+    </ul>
+
+    <button id="darkBtn" onclick="toggleDarkMode()">
+    🌙 Dark Mode
+</button>
+
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="hero-text">
+        <h2>Fast Campus Food  🍔</h2>
+
+        <p>
+            Order delicious meals, drinks, and desserts directly from your campus.
+        </p>
+
+        <button>Order Now</button>
+    </div>
+
+    <div class="hero-image">
+        <img src="burger.jpg" alt="Burger">
+    </div>
+
+</section>
+<!-- SEARCH + FILTER -->
+<div class="controls">
+
+    <input 
+        type="text" 
+        id="searchInput"
+        placeholder="Search food... 🔍"
+        onkeyup="searchFood()"
+    >
+
+    <select id="filterSelect" onchange="filterFood()">
+        <option value="all">All</option>
+        <option value="food">Foods</option>
+        <option value="drink">Drinks</option>
+        <option value="dessert">Desserts</option>
+    </select>
+
+</div>
+
+<!-- MENU SECTION -->
+<!-- FOOD -->
+<section class="menu">
+
+    <h2>🍔 Foods</h2>
+
+    <div class="food-container">
+
+        <div class="food-card food">
+            <img src="burger.jpg">
+            <h3>Burger</h3>
+            <p>450 ETB</p>
+            <button data-price="450">Add to Cart</button>
+        </div>
+
+        <div class="food-card food">
+            <img src="pizza.jpg">
+            <h3>Pizza</h3>
+            <p>450 ETB</p>
+            <button data-price="450">Add to Cart</button>
+        </div>
+
+        <div class="food-card food">
+            <img src="sandwich.jpg">
+            <h3>Sandwich</h3>
+            <p>180 ETB</p>
+            <button data-price="180">Add to Cart</button>
+        </div>
+
+        <div class="food-card food">
+            <img src="shawarma.jpg">
+            <h3>Shawarma</h3>
+            <p>300 ETB</p>
+            <button data-price="300">Add to Cart</button>
+        </div>
+
+        <div class="food-card food">
+            <img src="fries.jpg">
+            <h3>Fries</h3>
+            <p>120 ETB</p>
+            <button data-price="120">Add to Cart</button>
+        </div>
+
+        <div class="food-card food">
+            <img src="pasta.jpg">
+            <h3>Pasta</h3>
+            <p>300 ETB</p>
+            <button data-price="300">Add to Cart</button>
+        </div>
+
+        <div class="food-card food">
+            <img src="macoron.jpg">
+            <h3>Macaroni</h3>
+            <p>250 ETB</p>
+            <button data-price="250">Add to Cart</button>
+        </div>
+
+        <div class="food-card food">
+            <img src="chicken wrap.jpg">
+            <h3>Chicken Wrap</h3>
+            <p>350 ETB</p>
+            <button data-price="350">Add to Cart</button>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- DRINKS -->
+<section class="menu">
+
+    <h2>🥤 Drinks</h2>
+
+    <div class="food-container">
+
+        <div class="food-card drink">
+            <img src="coca.jpg">
+            <h3>Coca Cola</h3>
+            <p>70 ETB</p>
+            <button data-price="70">Add to Cart</button>
+        </div>
+
+        <div class="food-card drink">
+            <img src="sprite.jpg">
+            <h3>Sprite</h3>
+            <p>70 ETB</p>
+            <button data-price="70">Add to Cart</button>
+        </div>
+
+        <div class="food-card drink">
+            <img src="juice.jpg">
+            <h3>Juice</h3>
+            <p>120 ETB</p>
+            <button data-price="120">Add to Cart</button>
+        </div>
+
+        <div class="food-card drink">
+            <img src="coffee.jpg">
+            <h3>Coffee</h3>
+            <p>100 ETB</p>
+            <button data-price="100">Add to Cart</button>
+        </div>
+
+        <div class="food-card drink">
+            <img src="milkshake.jpg">
+            <h3>Milkshake</h3>
+            <p>250 ETB</p>
+            <button data-price="250">Add to Cart</button>
+        </div>
+
+        <div class="food-card drink">
+            <img src="water.jpg">
+            <h3>Water</h3>
+            <p>80 ETB</p>
+            <button data-price="80">Add to Cart</button>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- DESSERTS -->
+<section class="menu">
+
+    <h2>🍰 Desserts</h2>
+
+    <div class="food-container">
+
+        <div class="food-card dessert">
+            <img src="chocolate cake.jpg">
+            <h3>Chocolate Cake</h3>
+            <p>180 ETB</p>
+            <button data-price="180">Add to Cart</button>
+        </div>
+
+        <div class="food-card dessert">
+            <img src="ice cream.jpg">
+            <h3>Ice Cream</h3>
+            <p>150 ETB</p>
+            <button data-price="150">Add to Cart</button>
+        </div>
+
+        <div class="food-card dessert">
+            <img src="donut.jpg">
+            <h3>Donut</h3>
+            <p>90 ETB</p>
+            <button data-price="90">Add to Cart</button>
+        </div>
+
+        <div class="food-card dessert">
+            <img src="brownie.jpg">
+            <h3>Brownie</h3>
+            <p>130 ETB</p>
+            <button data-price="130">Add to Cart</button>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CART -->
+<section class="cart-panel">
+
+    <h2>🛒 Your Cart</h2>
+
+    <ul id="cart-items"></ul>
+
+    <h3>Total: <span id="total-price">0</span> ETB</h3>
+
+</section>
+
+<!-- JS -->
+<script>
+
+let count = 0;
+let total = 0;
+
+const cartCount = document.getElementById("cart-count");
+const cartItems = document.getElementById("cart-items");
+const totalPrice = document.getElementById("total-price");
+
+const buttons = document.querySelectorAll(".food-card button");
+
+buttons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        count++;
+        cartCount.textContent = count;
+
+        const itemName =
+        button.parentElement.querySelector("h3").textContent;
+
+        const price =
+        Number(button.getAttribute("data-price"));
+
+        total += price;
+        totalPrice.textContent = total;
+
+        const li = document.createElement("li");
+
+        li.innerHTML = `
+            ${itemName} - ${price} ETB
+            <button class="remove-btn">X</button>
+        `;
+
+        cartItems.appendChild(li);
+
+        li.querySelector(".remove-btn")
+        .addEventListener("click", () => {
+
+            li.remove();
+
+            count--;
+            total -= price;
+
+            cartCount.textContent = count;
+            totalPrice.textContent = total;
+
+        });
+
+    });
+
+});
+function searchFood() {
+
+    const input =
+    document.getElementById("searchInput")
+    .value.toLowerCase();
+
+    const cards =
+    document.querySelectorAll(".food-card");
+
+    cards.forEach(card => {
+
+        const foodName =
+        card.querySelector("h3")
+        .textContent.toLowerCase();
+
+        if(foodName.includes(input)){
+            card.style.display = "block";
+        }
+
+        else{
+            card.style.display = "none";
+        }
+
+    });
+
+}
+function filterFood() {
+
+    const category =
+    document.getElementById("filterSelect").value;
+
+    const cards =
+    document.querySelectorAll(".food-card");
+
+    cards.forEach(card => {
+
+        if(category === "all"){
+            card.style.display = "block";
+        }
+
+        else if(card.classList.contains(category)){
+            card.style.display = "block";
+        }
+
+        else{
+            card.style.display = "none";
+        }
+
+    });
+
+}
+function toggleDarkMode(){
+
+    document.body.classList.toggle("dark-mode");
+
+    if(document.body.classList.contains("dark-mode")){
+        localStorage.setItem("theme", "dark");
+    }
+
+    else{
+        localStorage.setItem("theme", "light");
+    }
+
+}
+
+/* Load Theme */
+
+if(localStorage.getItem("theme") === "dark"){
+    document.body.classList.add("dark-mode");
+}
+
+</script>
+
+</body>
+</html>

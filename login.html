@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BiteHub Login</title>
+    <link rel="stylesheet" href="web2.css">
+</head>
+<body>
+
+<div class="login-box">
+    <h1>🍔 BiteHub Login</h1>
+
+    <input type="text" id="username" placeholder="Enter your name">
+
+    <button onclick="login()">Enter BiteHub</button>
+
+    <p id="login-msg"></p>
+</div>
+
+<script>
+function login() {
+    let name = document.getElementById("username").value.trim();
+    let msg = document.getElementById("login-msg");
+
+    if (name === "") {
+        msg.textContent = "Please enter your name 😅";
+    } else {
+        localStorage.setItem("user", JSON.stringift({
+            name: name,
+            loggedIn: true
+        }));
+        window.location.href = "web1.html";
+    }
+}
+</script>
+
+</body>
+</html>
